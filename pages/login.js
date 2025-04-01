@@ -1,3 +1,5 @@
+const { expect } = require('@playwright/test');
+
 exports.LoginPage = class LoginPage {
 
     constructor(page) {
@@ -10,6 +12,7 @@ exports.LoginPage = class LoginPage {
 
     async gotoLoginPage(){
         await this.page.goto('https://the-internet.herokuapp.com/login');
+        await expect(this.page).toHaveURL(/login/);
     }
 
     async login(username, password){
